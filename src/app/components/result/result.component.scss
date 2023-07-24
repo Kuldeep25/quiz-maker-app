@@ -1,0 +1,22 @@
+.result-container{
+    border: 1px solid black;
+    
+    .option-btn-container {
+        .answer {
+            color: green;
+            border: solid 1px green;
+            margin-right: 8px;
+        }
+    
+        .correct-answer {
+            background-color: green;
+            color: white;
+        }
+    
+        .incorrect-answer {
+            background-color: red;
+            color: white;
+        }
+    }
+}
+

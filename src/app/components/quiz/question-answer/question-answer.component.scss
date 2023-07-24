@@ -1,0 +1,14 @@
+.option-btn-container {
+    .option {
+        color: green;
+        border: solid 1px green;
+        margin-right: 8px;
+    }
+
+    button:hover,
+    .selected {
+        background-color: green;
+        color: white !important;
+    }
+}
+

@@ -1,0 +1,21 @@
+<div class="container">
+    <ng-container *ngIf="results.length > 0; else noData">
+        <div *ngFor="let question of results; let questionIndex=index;" class="mb-2">
+            <div class="py-2 h6"><b>Q.{{questionIndex+1}} <span>{{question.question}}</span> </b></div>
+
+            <div class="d-block option-btn-container">
+                <button *ngFor="let option of question?.incorrect_answers; let answerIndex=index"
+                    [ngClass]="{'selected': question?.answerIndex === answerIndex}"
+                    (click)="setSelectedAnswer(questionIndex, answerIndex, option)" class="option btn btn-sm">{{option}}</button>
+            </div>
+        </div>
+        <div class="text-center mt-4 mb-4">
+            <button *ngIf="showSubmitBtn" (click)="submitQuetionAnswers()" class="btn btn-primary" > Submit</button>
+        </div>
+    </ng-container>
+    <ng-template #noData>
+        <div class="text-center mt-4">
+            Data not available.
+        </div>
+    </ng-template>
+</div>

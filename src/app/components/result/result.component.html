@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="text-center mt-4">
+        <h1>RESULT</h1>
+    </div>
+    <div class="result-container p-4">
+        <div *ngFor="let res of results; let i=index;" class="mb-2">
+            <div class="py-2 h6"><b>Q.{{i+1}} <span>{{res.question}}</span> </b></div>
+
+            <div class="d-block option-btn-container">
+                <ng-container *ngFor="let option of res?.incorrect_answers; let answerIndex=index">
+                    <button
+                        [ngClass]="{'correct-answer': option === res?.correct_answer, 'incorrect-answer': option === res?.selectedAnswer && res?.correct_answer !== res?.selectedAnswer  }"
+                        class="answer btn btn-sm">{{option}} </button>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="row text-center mt-4">
+            <div class="col-8 offset-2" style="font-size: 14px;" [ngStyle]="{'background-color':bgColor}">
+                You scored {{ noOfCorrectAnswers }} out of {{ noOfQuestions }}
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="button" class="btn btn-primary w-100" routerLink="/">Create a new quiz</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="text-center mt-4">
+        <h1>QUIZ MAKER</h1>
+    </div>
+
+    <form [formGroup]="quizForm" (ngSubmit)="submitQuizForm()" class="form-container p-4 mb-4">
+        <div class="form-row">
+            <div class="form-group col-5">
+                <label>Category</label>
+                <select class="form-control" id="categorySelect"
+                    formControlName="category">
+                    <option value="Select category">Select category</option>
+                    <option *ngFor="let category of categoryList?.trivia_categories; let i=index"
+                        [value]="category?.id">
+                        {{category?.name}}</option>
+                </select>
+            </div>
+            <div class="form-group col-5">
+                <label>Difficulty level</label>
+                <select class="form-control" id="difficultySelect"
+                    formControlName="difficultyLevel">
+                    <option *ngFor="let difficultyLevel of difficultyLevels" [value]="difficultyLevel?.id">
+                        {{difficultyLevel.name}}</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-top: 31px;">
+                <button class="btn btn-primary" type="submit" [disabled]="!quizForm.valid"
+                    id="createBtn">Create</button>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="questionAnwsersResponse?.results" class="question-answer-container">
+        <app-question-answer [results]="questionAnwsersResponse.results"></app-question-answer>
+    </div>
+</div>
