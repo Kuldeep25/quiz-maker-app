@@ -7,13 +7,13 @@ import { LoaderService } from '../services/loader.service';
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
 
-    constructor(private quizloaderService: LoaderService) { }
+    constructor(private loaderService: LoaderService) { }
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-        this.quizloaderService.showLoader();
+        this.loaderService.showLoader();
 
         return next.handle(request).pipe(
-            finalize(() => this.quizloaderService.hideLoader()),
+            finalize(() => this.loaderService.hideLoader()),
         );
     }
 }
